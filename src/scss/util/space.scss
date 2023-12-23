@@ -1,0 +1,53 @@
+
+
+@function parseRem($value) {
+  @if $value == 0 {
+    @return $value;
+  }
+  @return $value * 0.01rem;
+}
+
+@mixin genRem($nameMap: (), $position: (), $from, $to) {
+  @each $preKey, $preValue in $nameMap {
+    @each $posKey, $posValue in $position {
+      @for $size from $from through $to {
+        .#{$preKey}#{$posKey}-#{$size} {
+          #{$preValue}-#{$posValue}: parseRem($size)
+        }
+      }
+    }
+  }
+}
+
+$pos: ("l": "left", "r": "right", "t": "top", "b": "bottom");
+
+@include genRem(('m':'margin', 'p':'padding'), $pos, 0, 1000);
+
+// height
+@mixin genHeight() {
+  @for $height from 1 through 1000 {
+    .height-#{$height} {
+      height: parseRem($height);
+    }
+  }
+}
+
+@include genHeight();
+
+// width percent
+@mixin genPercentWidth() {
+  @for $width from 0 through 100 {
+    .width-#{$width}per {
+      width: parsePer($width);
+    }
+  }
+}
+
+@function parsePer($value) {
+  @if ($value == 0) {
+    @return $value
+  }
+  @return $value * 1%;
+}
+
+@include genPercentWidth();

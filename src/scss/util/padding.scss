@@ -1,0 +1,17 @@
+@mixin create() {
+  @for $i from 0 through 1000 {
+    @each $dir in ("left", "right", "top", "bottom") {
+      .padding-#{$dir}-rem-#{$i}per {
+        padding-#{$dir}: 0.01rem * $i;
+      }
+    }
+  }
+
+  @for $i from 0 through 100 {
+    .padding-rem-#{$i}per {
+      padding: 0.01rem * $i;
+    }
+  }
+}
+
+@include create();

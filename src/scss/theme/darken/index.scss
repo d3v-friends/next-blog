@@ -1,0 +1,29 @@
+@import "../../font/ibmflex";
+@import "../../font/consolas";
+@import "input";
+@import "label";
+@import "nav";
+@import "h";
+
+* {
+  font-family: ibm-flex, sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--normal-color);
+}
+
+// 주 사용처에 따라서 이름 규칙 짓기
+// 사용할떄 -> var(--primary-color)
+// 1. normal: defaults
+// 2. border:
+// 3. background
+// 4. focus: h 눈에 띄는 것
+
+:root {
+  --normal-color: #BCBEC4;
+  --border--color: #F2F1EB;
+  --background-color: #1E1F22;
+  --focus-color: #AFC8AD;
+}

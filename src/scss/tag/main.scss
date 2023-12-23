@@ -1,0 +1,16 @@
+@import "../variable";
+
+main {
+  @include bp1 {
+    min-height: calc(100% - #{$nav1});
+  }
+  @include bp2 {
+    min-height: calc(100% - #{$nav2});
+  }
+  @include bp3 {
+    min-height: calc(100% - #{$nav3});
+  }
+  @include bp4 {
+    min-height: calc(100% - #{$nav4});
+  }
+}

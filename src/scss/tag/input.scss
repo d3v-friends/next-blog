@@ -1,0 +1,26 @@
+input {
+  width: 100%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: transparent;
+  background-color: transparent;
+  padding: 0.3rem;
+  outline: none;
+  outline-offset: 0;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: none;
+}
+
+input:hover,
+input:focus,
+input:focus-visible,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  //-webkit-text-fill-color: #fff;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
+}
+

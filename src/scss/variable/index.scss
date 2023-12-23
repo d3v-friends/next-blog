@@ -1,0 +1,53 @@
+$side1: 100px;
+$side2: 150px;
+$side3: 200px;
+$side4: 250px;
+
+$bp1: 0;
+$bp2: 720px;
+$bp3: 1080px;
+$bp4: 1440px;
+
+$nav1: 40px;
+$nav2: 50px;
+$nav3: 55px;
+$nav4: 60px;
+
+$nav-p1: calc(#{$nav1} + 0.5rem);
+$nav-p2: calc(#{$nav2} + 0.5rem);
+$nav-p3: calc(#{$nav3} + 0.5rem);
+$nav-p4: calc(#{$nav4} + 0.5rem);
+
+$zIndex: (
+        "body": 0,
+        "tooltip": 10,
+        "side": 20,
+        "nav": 30,
+        "modal": 50,
+        "popup": 60,
+);
+
+
+@mixin bp1 {
+  @media screen and (min-width: $bp1) {
+    @content;
+  }
+}
+
+@mixin bp2 {
+  @media screen and (min-width: $bp2) {
+    @content;
+  }
+}
+
+@mixin bp3 {
+  @media screen and (min-width: $bp3) {
+    @content;
+  }
+}
+
+@mixin bp4 {
+  @media screen and (min-width: $bp4) {
+    @content;
+  }
+}

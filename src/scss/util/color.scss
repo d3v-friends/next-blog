@@ -1,0 +1,14 @@
+$color: ("normal", "focus", "background", "border");
+$property: ("background-color", "color", "border-color");
+
+@mixin create($colors: (), $props: ()) {
+  @each $color in $colors {
+    @each $prop in $props {
+      .#{$prop}-#{$color} {
+        #{$prop}: var(--#{$color}-color);
+      }
+    }
+  }
+}
+
+@include create($color, $property)

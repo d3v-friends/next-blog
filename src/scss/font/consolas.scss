@@ -1,0 +1,15 @@
+@font-face {
+  font-family: consolas, sans-serif;
+  src: local("consolas"), url('/asset/font/consolas/consolas.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: consolas, sans-serif;
+  src: local("consolas"), url('/asset/font/consolas/consolas_bold.ttf');
+  font-weight: bold;
+}
+
+.font-consolas {
+  font-family: consolas, sans-serif;
+}

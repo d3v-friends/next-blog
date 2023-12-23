@@ -1,0 +1,9 @@
+@mixin createPercent() {
+  @for $i from 0 through 100 {
+    .width-#{$i}per {
+      width: percentage($i/100);
+    }
+  }
+}
+
+@include createPercent();
