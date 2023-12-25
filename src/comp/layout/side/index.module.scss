@@ -1,3 +1,17 @@
-.cont {
+@import "@comp/layout/variable";
+@import "@scss/variable";
 
+.cont {
+  @include bp1() {
+    height: $nav1
+  }
+  @include bp2() {
+    height: $nav2
+  }
+  @include bp3() {
+    height: $nav3
+  }
+  @include bp4() {
+    height: $nav4
+  }
 }

@@ -14,3 +14,7 @@ html5 standard tag
 
 https://developer.mozilla.org/ko/docs/Web/HTML/Element
 
+* icon
+  https://www.svgrepo.com/collection/dazzle-line-icons/
+
+* 

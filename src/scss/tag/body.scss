@@ -14,27 +14,12 @@
 
 @include bp3 {
   body {
-    font-size: 18px;
+    font-size: 20px;
   }
 }
 
 @include bp4 {
   body {
-    font-size: 20px;
-  }
-}
-
-.nav-padding-top {
-  @include bp1 {
-    padding-top: $nav-p1;
-  }
-  @include bp2 {
-    padding-top: $nav-p2;
-  }
-  @include bp3 {
-    padding-top: $nav-p3;
-  }
-  @include bp4 {
-    padding-top: $nav-p4;
+    font-size: 24px;
   }
 }

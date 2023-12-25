@@ -1,5 +1,17 @@
-
 input {
   color: var(--normal-color);
   border-color: var(--border--color);
+  border-width: 0.2rem;
+  border-style: solid;
 }
+
+input:hover,
+input:focus,
+input:focus-visible,
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  border-color: var(--border--hover);
+}
+

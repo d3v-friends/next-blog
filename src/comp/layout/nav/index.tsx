@@ -1,12 +1,19 @@
+import fnCss from "@scss/index";
 import { ReactNode } from "react";
-import Title from "./title";
+import css from "./index.module.scss";
 
 interface Props {
-    children?: ReactNode;
+    items: NavItem[],
 }
 
-export default async function({ children }: Props) {
-    return <nav>
-        <Title>ABCD</Title>
-        {children}</nav>;
+export interface NavItem {
+    iconSrc: string;
+    href: string;
+    label: string;
+}
+
+export default function({ items }: Props) {
+    return items.map((v, i) => (
+        <div className={fnCss.merge("no-drag")} key={i}>{v.label}</div>
+    ));
 }

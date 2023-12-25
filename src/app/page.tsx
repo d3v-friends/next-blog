@@ -5,6 +5,8 @@ export default async function() {
             <div className="font-ibm-flex">ibm-flex</div>
             <label htmlFor="username">Username</label>
             <input id="username" type="text" placeholder="username" />
+            <button>button</button>
+            <button className="outline">button</button>
             <h1>h1</h1>
             <h2>h2</h2>
             <h3>h3</h3>

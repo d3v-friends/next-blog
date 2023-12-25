@@ -1,10 +1,20 @@
 import { ReactNode } from "react";
 import css from "./index.module.scss";
+import Item from "./item";
+
 
 interface Props {
-    children?: ReactNode;
+    items: SideItem[],
 }
 
-export default async function({ children }: Props) {
-    return <div className={css.cont}>{children}</div>;
+export interface SideItem {
+    label: ReactNode;
+    elem?: ReactNode;
+    iconSrc: string;
+    href?: string;
+    sub?: SideItem[];
+}
+
+export default async function({ items }: Props) {
+    return items.map((v, i) => (<div key={i}><Item data={v} /></div>));
 }
