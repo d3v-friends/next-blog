@@ -1,5 +1,8 @@
+"use client";
 import fnCss from "@scss/index";
-import { ReactNode } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import {usePathname} from "next/navigation";
 import css from "./index.module.scss";
 
 interface Props {
@@ -7,13 +10,22 @@ interface Props {
 }
 
 export interface NavItem {
-    iconSrc: string;
+    iconSrc: string | any;
     href: string;
     label: string;
 }
 
-export default function({ items }: Props) {
+export default function ({items}: Props) {
+    const pathname = usePathname();
+    const isActive = (href: string): boolean => {
+        return pathname.startsWith(href);
+    }
     return items.map((v, i) => (
-        <div className={fnCss.merge("no-drag")} key={i}>{v.label}</div>
+        <Link href={v.href} key={i}>
+            <div className={fnCss.merge(css["cont"], "no-drag")}>
+                <Image className={fnCss.merge(css["img"],)} src={v.iconSrc} alt={v.label} width={50} height={50}/>
+                <div className={fnCss.merge(css["label"], isActive(v.href) ? css["active"] : "")}>{v.label}</div>
+            </div>
+        </Link>
     ));
 }

@@ -1,27 +1,34 @@
+import svg from "@comp/svg";
+import fnCss from "@scss/index";
 import Image from "next/image";
 import Link from "next/link";
-import { ReactNode } from "react";
+import {ReactNode} from "react";
 import css from "./index.module.scss";
 
 interface Props {
     href?: string,
     isOpen: boolean,
+    hasSub: boolean,
     label: ReactNode,
     iconSrc: string,
     onClick?: Function
 }
 
-export default  function({ href, label, iconSrc, onClick, isOpen }: Props) {
+export default function ({href, label, iconSrc, onClick, isOpen, hasSub}: Props) {
     const labelItem = (
-        <div>
-            <Image src={iconSrc} alt={iconSrc} width={50} height={50} />
-            {label}
+        <div className={fnCss.merge(css.cont)}>
+            <Image className={css.img} src={iconSrc} alt={iconSrc} width={30} height={30}/>
+            <div className={css.label}>{label}</div>
+            {hasSub && <div className={css.check}>
+                {isOpen && <Image className={fnCss.merge(css["check-up"], css.caret)} src="/asset/svg/white/caret-down.svg" width={20} height={20} alt="open"/>}
+                {!isOpen && <Image className={fnCss.merge(css["check-up"], css.caret)} src="/asset/svg/white/caret-up.svg" width={20} height={20} alt="close"/>}
+            </div>}
         </div>
     );
 
     if (href) {
         return (
-            <Link href={href}>
+            <Link className={fnCss.merge("height-100p")} href={href}>
                 {labelItem}
             </Link>
         );
@@ -32,7 +39,7 @@ export default  function({ href, label, iconSrc, onClick, isOpen }: Props) {
     }
 
     return (
-        <div onClick={() => onClick()}>
+        <div className={fnCss.merge("height-100p", "no-drag")} onClick={() => onClick!()}>
             {labelItem}
         </div>
     );

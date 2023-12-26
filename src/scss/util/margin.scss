@@ -1,0 +1,27 @@
+@import "../variable";
+
+@mixin create($unit) {
+  @each $dir in $direction {
+    @for $i from 0 through 100 {
+      .margin-#{$dir}-#{$i}-#{$unit} {
+        margin-#{$dir}: $i * 1 $unit;
+      }
+    }
+  }
+}
+
+@include create("px");
+
+$rems: ("0", "0.1", "0.2", "0.3", "0.4", "0.5", "0.6", "0.7", "0.8", "0.9", "1", "1.1", "1.2", "1.3", "1.4", "1.5", "1.6", "1.7", "1.8", "1.9", "2");
+
+@mixin createRem() {
+  @each $dir in $direction {
+    @for $i from 0 through 1000 {
+      .margin-#{$dir}-#{$i}p-rem {
+        margin-#{$dir}: $i * 0.01rem;
+      }
+    }
+  }
+}
+
+@include createRem();

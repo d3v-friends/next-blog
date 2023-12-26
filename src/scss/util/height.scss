@@ -1,6 +1,6 @@
 @mixin createPercent() {
   @for $i from 0 through 100 {
-    .height-#{$i}per {
+    .height-#{$i}p {
       height: percentage($i/100);
     }
   }

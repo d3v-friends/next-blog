@@ -37,7 +37,10 @@
       "@fn/*": [
         "./fn/*"
       ]
-    }
+    },
+    "types": [
+      "./type.d.ts"
+    ]
   },
   "include": [
     "next-env.d.ts",

@@ -12,6 +12,7 @@ $zIndex: (
         "popup": 60,
 );
 
+$direction: ("top", "bottom", "left", "right");
 
 @mixin bp1 {
   @media screen and (min-width: $bp1) {

@@ -10,7 +10,7 @@ interface Props {
 export interface SideItem {
     label: ReactNode;
     elem?: ReactNode;
-    iconSrc: string;
+    iconSrc: string | any;
     href?: string;
     sub?: SideItem[];
 }

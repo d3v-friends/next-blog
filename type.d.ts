@@ -1,5 +1,6 @@
-declare module "*.module.css" {
-    const styles: { [className: string]: { [className: string]: string } | string };
+type Scss = { [className: string]: string | Scss }
+declare module "*.module.scss" {
+    const styles: Scss;
     export = styles;
 }
 

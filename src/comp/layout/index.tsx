@@ -1,4 +1,5 @@
 import fnCss from "@scss/index";
+import Link from "next/link";
 import {ReactNode} from "react";
 import css from "./index.module.scss";
 import Nav, {NavItem} from "./nav";
@@ -20,13 +21,15 @@ export default async function ({title, children, footer, sideItems, navItems}: P
     return (
         <>
             <div className={css.side}>
-                <div className={fnCss.merge(css["title"], "no-drag")}>{title}</div>
+                <Link href="/">
+                    <div className={fnCss.merge(css["title"], "no-drag")}>{title}</div>
+                </Link>
                 <Side items={sideItems}/>
             </div>
             <div className={fnCss.merge(css["content"], css["content-width"])}>
                 <nav className={fnCss.merge("z-index-50", css["nav"], css["content-padding"], css["content-width"])}>
                     <menu className={css["nav-menu"]}>menu</menu>
-                    <div className={css["nav-content"]}>
+                    <div className={fnCss.merge(css["nav-content"])}>
                         <Nav items={navItems}/>
                     </div>
                 </nav>
