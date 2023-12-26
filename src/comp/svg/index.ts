@@ -1,11 +1,7 @@
-import primary from "./primary";
-import secondary from "./secondary";
-import background from "./background";
+import white from "./white";
 
 const svg = {
-    primary,
-    secondary,
-    background,
+    white
 };
 
 export default svg;
