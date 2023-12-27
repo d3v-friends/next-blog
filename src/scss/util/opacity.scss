@@ -1,0 +1,10 @@
+@mixin create() {
+  @for $i from 0 through 100 {
+    .opacity-#{$i}p {
+      opacity: $i * 1%;
+    }
+  }
+}
+
+@include create();
+

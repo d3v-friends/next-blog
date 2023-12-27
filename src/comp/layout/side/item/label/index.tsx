@@ -20,8 +20,8 @@ export default function ({href, label, iconSrc, onClick, isOpen, hasSub}: Props)
             <Image className={css.img} src={iconSrc} alt={iconSrc} width={30} height={30}/>
             <div className={css.label}>{label}</div>
             {hasSub && <div className={css.check}>
-                {isOpen && <Image className={fnCss.merge(css["check-up"], css.caret)} src="/asset/svg/white/caret-down.svg" width={20} height={20} alt="open"/>}
-                {!isOpen && <Image className={fnCss.merge(css["check-up"], css.caret)} src="/asset/svg/white/caret-up.svg" width={20} height={20} alt="close"/>}
+                {isOpen && <Image className={fnCss.merge(css["check-up"], css.caret)} src="/asset/svg/abocado/caret-up.svg" width={20} height={20} alt="open"/>}
+                {!isOpen && <Image className={fnCss.merge(css["check-up"], css.caret, "opacity-30p")} src="/asset/svg/white/caret-down.svg" width={20} height={20} alt="close"/>}
             </div>}
         </div>
     );
