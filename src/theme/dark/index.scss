@@ -1,0 +1,34 @@
+@import "./tag";
+
+:root {
+  --bg-color: #1e1f22;
+  --font-color: #bcbec3;
+  --title-color: #c69171;
+  --active-color: #73a173;
+  --braket-color: #d3af4a;
+  --label-color: #5a626d;
+  --border-color: #4c4e51;
+  --border-disabled-color: #38393c;
+  --border-focus-color: #737781;
+  --select-color: #26282e;
+  --panel-color: #2b2d30;
+  --row-active-color: #3b3225;
+  --row-hover-color: #43454a;
+
+  --button-color: #2b2d30;
+  --button-border-color: #45484d;
+  --button-hover-color: #35373b;
+
+  --top-nav-color: #2b2d30;
+}
+
+
+:root {
+  --side-zindex: 50;
+  --content-zindex: 0;
+  --nav-zindex: 60;
+}
+
+:root {
+  --default-padding: 1rem;
+}

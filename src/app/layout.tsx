@@ -1,25 +1,27 @@
-import {NavItem} from "@comp/layout/nav";
-import {SideItem} from "@comp/layout/side";
 import svg from "@comp/svg";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 import Layout from "@comp/layout";
 import "@scss/index.scss";
+import "@theme/dark/index.scss";
 
 interface Props {
     children?: ReactNode;
 }
 
-export default async function ({children}: Props) {
+export default async function({ children }: Props) {
     return (
         <html lang="ko">
         <body className="no-scrollBar">
-        <Layout title={"next-blog"} sideItems={sideItems} navItems={navItems}>{children}</Layout>
+        <Layout
+            title={"next-blog"}>
+            {children}
+        </Layout>
         </body>
         </html>
     );
 }
 
-const sideItems: SideItem[] = [
+const sideItems = [
     {
         label: "dashboard",
         iconSrc: svg.white.manage,
@@ -43,7 +45,7 @@ const sideItems: SideItem[] = [
     },
 ];
 
-const navItems: NavItem[] = [
+const navItems = [
     {
         iconSrc: svg.white.signUp,
         label: "회원가입",

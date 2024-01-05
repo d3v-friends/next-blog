@@ -1,157 +1,40 @@
-@import "@scss/variable";
-@import "variable";
+$nav-height: 60px;
 
-.side {
-  position: fixed;
-  left: 0;
-  top: 0;
-  @include bp1 {
-    display: none;
-    width: $side1;
-  }
-  @include bp2 {
-    display: none;
-    width: $side2;
-  }
-  @include bp3 {
-    display: block;
-    width: $side3;
-  }
-  @include bp4 {
-    display: block;
-    width: $side4;
-  }
-}
-
-
-.side .title {
+.content-cont {
+  padding-top: $nav-height;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--focus-color);
-  color: var(--background-color);
-  font-weight: 700;
-  font-size: 1.4rem;
-
-  @include bp1 {
-    height: $nav1;
-  }
-  @include bp2 {
-    height: $nav2;
-  }
-  @include bp3 {
-    height: $nav3;
-  }
-  @include bp4 {
-    height: $nav4;
-  }
+  justify-content: flex-start;
+  align-items: flex-start;
+  z-index: var(--content-zindex);
 }
 
-.content-width {
-  @include bp1 {
-    width: 100%;
-    left: 0;
-  }
-  @include bp2 {
-    width: 100%;
-    left: 0;
-  }
-  @include bp3 {
-    width: calc(100% - $side3);
-    left: $side3;
-  }
-  @include bp4 {
-    width: calc(100% - $side4);
-    left: $side4;
-  }
+.side-cont {
+  position: fixed;
+  top: 0;
+  background-color: var(--panel-color);
+  height: 100vh;
+  z-index: var(--side-zindex);
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+  padding: $nav-height var(--default-padding);
 }
 
 .content {
-  position: relative;
-  top: 0;
+  flex-grow: 1;
+  padding: var(--default-padding);
+  box-sizing: content-box;
 }
 
 .nav {
+  height: $nav-height;
+  z-index: var(--nav-zindex);
+  background-color: var(--top-nav-color);
+  border-bottom: 1px solid var(--border-disabled-color);
   position: fixed;
-  top: 0;
-  backdrop-filter: blur(4px);
+  width: 100%;
+  box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
+
   display: flex;
   justify-content: flex-start;
   align-items: center;
-
-  @include bp1 {
-    left: 0;
-    height: $nav1;
-  }
-  @include bp2 {
-    left: 0;
-    height: $nav2;
-  }
-  @include bp3 {
-    left: $side3;
-    height: $nav3;
-  }
-  @include bp4 {
-    left: $side4;
-    height: $nav4;
-  }
-}
-
-.nav-content {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.nav-menu {
-  @include bp1 {
-    display: block;
-  }
-  @include bp2 {
-    display: block;
-  }
-  @include bp3 {
-    display: none;
-  }
-  @include bp4 {
-    display: none;
-  }
-}
-
-.main {
-  min-height: 100%;
-  @include bp1 {
-    padding-top: calc($nav1 + 0.5rem);
-  }
-  @include bp2 {
-    padding-top: calc($nav2 + 0.5rem);
-  }
-  @include bp3 {
-    padding-top: calc($nav3 + 0.5rem);
-  }
-  @include bp4 {
-    padding-top: calc($nav4 + 0.5rem);
-  }
-}
-
-
-.content-padding {
-  @include bp1 {
-    padding-left: $content-padding1;
-    padding-right: $content-padding1;
-  }
-  @include bp2 {
-    padding-left: $content-padding2;
-    padding-right: $content-padding2;
-  }
-  @include bp3 {
-    padding-left: $content-padding3;
-    padding-right: $content-padding3;
-  }
-  @include bp4 {
-    padding-left: $content-padding4;
-    padding-right: $content-padding4;
-  }
 }

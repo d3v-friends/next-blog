@@ -23,19 +23,19 @@
       }
     ],
     "rootDir": ".",
-    "baseUrl": "./src",
+    "baseUrl": ".",
     "paths": {
       "@app/*": [
-        "./app/*"
+        "./src/app/*"
       ],
       "@comp/*": [
-        "./comp/*"
+        "./src/comp/*"
       ],
       "@scss/*": [
-        "./scss/*"
+        "./src/scss/*"
       ],
-      "@fn/*": [
-        "./fn/*"
+      "@theme/*": [
+        "./src/theme/*"
       ]
     },
     "types": [
