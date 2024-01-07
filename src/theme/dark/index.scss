@@ -27,7 +27,8 @@
 
 
 :root {
-  --side-zindex: 50;
+  --side-parent-zindex: 51;
+  --side-children-zindex: 50;
   --content-zindex: 0;
   --nav-zindex: 60;
 }

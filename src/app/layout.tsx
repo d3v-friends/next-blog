@@ -1,4 +1,3 @@
-import svg from "@comp/svg";
 import { ReactNode } from "react";
 import Layout from "@comp/layout";
 import "@scss/index.scss";
@@ -13,6 +12,54 @@ export default async function({ children }: Props) {
         <html lang="ko">
         <body className="no-scrollBar">
         <Layout
+            navMenu={[
+                {
+                    label: "Dashboard",
+                    href: "/dashboard",
+                    imgSrc: "/asset/svg/white/account.svg",
+                },
+                {
+                    label: "Javascript",
+                    href: "/lang/js",
+                    imgSrc: "/asset/svg/white/account.svg",
+                },
+                {
+                    label: "C++",
+                    href: "/lang/cpp",
+                    imgSrc: "/asset/svg/white/account.svg",
+                },
+                {
+                    label: "Golang",
+                    href: "/lang/go",
+                    imgSrc: "/asset/svg/white/account.svg",
+                },
+            ]}
+            sideMenu={[
+                {
+                    label: "Dashboard",
+                    href: "/dashboard",
+                    imgSrc: "/asset/svg/white/account.svg",
+                    sub: <>Dashboard</>,
+                },
+                {
+                    label: "Javascript",
+                    href: "/lang/js",
+                    imgSrc: "/asset/svg/white/account.svg",
+                    sub: <>Javascript</>,
+                },
+                {
+                    label: "C++",
+                    href: "/lang/cpp",
+                    imgSrc: "/asset/svg/white/account.svg",
+                    sub: <>Cpp</>,
+                },
+                {
+                    label: "Golang",
+                    href: "/lang/go",
+                    imgSrc: "/asset/svg/white/account.svg",
+                    sub: <>Golang</>,
+                },
+            ]}
             title={"next-blog"}>
             {children}
         </Layout>
@@ -20,41 +67,3 @@ export default async function({ children }: Props) {
         </html>
     );
 }
-
-const sideItems = [
-    {
-        label: "dashboard",
-        iconSrc: svg.white.manage,
-        href: "/",
-    },
-    {
-        label: "content",
-        iconSrc: svg.white.manage,
-        sub: [
-            {
-                label: "important",
-                iconSrc: svg.white.manage,
-                sub: [
-                    {
-                        label: "really",
-                        iconSrc: svg.white.manage,
-                    },
-                ],
-            },
-        ],
-    },
-];
-
-const navItems = [
-    {
-        iconSrc: svg.white.signUp,
-        label: "회원가입",
-        href: "/sign/up",
-    },
-    {
-        iconSrc: svg.white.signIn,
-        label: "로그인",
-        href: "/sign/in",
-    },
-
-];

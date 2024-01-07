@@ -1,108 +1,136 @@
 "use client";
 import { fnCss } from "@fn-nextjs";
-import Image from "next/image";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
 import { ReactNode, useState } from "react";
 import css from "./index.module.scss";
 import { useSpring, animated } from "@react-spring/web";
-import Title from "./title";
-import SideItem from "./sideItem";
+import SideIcon from "./sideIcon";
+import TopIcon from "./topIcon";
 
 interface Props {
     mobileMenuHref?: string;
     title?: ReactNode;
     footer?: ReactNode;
     children?: ReactNode;
+    sideMenu: SideMenu[];
+    navMenu: NavMenu[];
 }
 
-export const SideMenuSize = {
-    width: 300,
-    minWidth: 60,
+export const SideSize = {
+    parent: 60,
+    children: 300,
 };
 
-const onSide = {
+const animStatus = {
     show: {
-        left: 0,
-        contentLeft: SideMenuSize.width,
-        sideLeftWidth: 0,
-        sideLabelWidth: SideMenuSize.width - SideMenuSize.minWidth,
-        sideIconRotate: "rotate(270deg)",
+        sideLeft: 0,
+        contentLeftWidth: SideSize.children,
     },
     hide: {
-        left: -(SideMenuSize.width - SideMenuSize.minWidth),
-        contentLeft: SideMenuSize.minWidth,
-        sideLeftWidth: SideMenuSize.width - SideMenuSize.minWidth,
-        sideLabelWidth: 0,
-        sideIconRotate: "rotate(90deg)",
+        sideLeft: -SideSize.children + SideSize.parent,
+        contentLeftWidth: SideSize.parent,
     },
 };
 
-export default function({ title, children, footer }: Props) {
+export interface SideMenu {
+    label: string;
+    imgSrc: string;
+    href: string;
+    sub?: ReactNode;
+}
+
+export interface NavMenu {
+    href: string;
+    imgSrc: string;
+    label: string;
+}
+
+export default function({ title, children, footer, sideMenu, navMenu }: Props) {
     const [style, api] = useSpring(() => ({
-        from: onSide.show,
+        from: animStatus.show,
     }));
-    const [isShow, setIsShow] = useState(false);
+    const [sideActive, setSideActive] = useState(true);
+    const [sideChildren, setSideChildren] = useState<ReactNode | null>(sideMenu[0].sub);
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handler = {
-        onOpen: () => {
-            api.start(onSide.show);
-            setIsShow(true);
+        onHide: () => {
+            api.start(animStatus.hide);
+            setSideActive(false);
         },
-        onClose: () => {
-            api.start(onSide.hide);
-            setIsShow(false);
+        onShow: () => {
+            api.start(animStatus.show);
+            setSideActive(true);
         },
-        toggle: () => {
-            if (isShow) {
-                handler.onClose();
+        onToggle: (idx: number) => {
+            const { href, sub } = sideMenu[idx];
+
+            if (!pathname.startsWith(href)) {
+                router.push(href);
+                setSideChildren(sub);
+                return;
+            }
+
+            if (sideActive) {
+                handler.onHide();
             } else {
-                handler.onOpen();
+                handler.onShow();
             }
         },
     };
 
-
     return (
         <>
             <nav className={css.nav}>
-                <Title>{title}</Title>
-            </nav>
-            <animated.div
-                style={{ left: style.left, width: SideMenuSize.width }}
-                className={fnCss.merge(css["side-cont"])}>
-                <div
-                    onClick={() => handler.toggle()}
-                    style={{ width: SideMenuSize.width }}
-                    className={fnCss.merge(css["side-button"])}>
-                    <animated.div
-                        style={{ width: style.sideLeftWidth }} />
-                    <animated.div
-                        className={fnCss.merge(css["side-icon"])}
-                        style={{ width: SideMenuSize.minWidth, transform: style.sideIconRotate }}>
-                        <Image
-                            className={fnCss.merge(css["side-button-icon"], "no-drag")}
-                            src={"/asset/svg/white/caret-up.svg"}
-                            alt={"caret"}
-                            width={SideMenuSize.minWidth}
-                            height={SideMenuSize.minWidth} />
-                    </animated.div>
-                    <animated.div
-                        style={{ width: style.sideLabelWidth }}
-                        className={fnCss.merge(css["side-label"])}>
-                        메뉴닫기
-                    </animated.div>
+                <Link
+                    className={fnCss.merge(css["nav-title-cont"])}
+                    href={"/"}
+                    style={{ width: SideSize.children }}>
+                    <SideIcon
+                        isActive={false}
+                        imgSrc={"/asset/svg/white/caret-up.svg"}
+                        size={SideSize.parent} />
+                    <div
+                        className={fnCss.merge(css["nav-title-label"])}>
+                        {title}
+                    </div>
+                </Link>
+                <div className={fnCss.merge(css["nav-side-cont"])}>
+                    {navMenu.map((v, i) => (<TopIcon key={i} {...v}></TopIcon>))}
                 </div>
-                <SideItem
-                    width={SideMenuSize.width}
-                    minWidth={SideMenuSize.minWidth}
-                    imgSrc={"/asset/svg/white/account.svg"}
-                    href={"/dashboard"}
-                    label={"dashboard"}
-                    leftSpaceWidth={style.sideLeftWidth}
-                    rightLabelWidth={style.sideLabelWidth} />
+            </nav>
+
+
+            {/* 고정형 1단*/}
+            <div
+                style={{ width: SideSize.parent }}
+                className={fnCss.merge(css["side"], css["side-parent"])}>
+                {sideMenu.map((v, i) => (
+                    <div key={i} onClick={() => handler.onToggle(i)}>
+                        <SideIcon
+                            label={v.label}
+                            isActive={pathname.startsWith(v.href)}
+                            imgSrc={v.imgSrc}
+                            size={SideSize.parent} />
+                    </div>
+                ))}
+
+            </div>
+
+            {/* 유동형 2단 */}
+            <animated.div
+                style={{
+                    left: style.sideLeft,
+                    width: SideSize.children,
+                }}
+                className={fnCss.merge(css["side"], css["side-children"])}>
+                {sideChildren}
             </animated.div>
             <div className={fnCss.merge(css["content-cont"])}>
                 <animated.div
-                    style={{ width: style.contentLeft }} />
+                    style={{ width: style.contentLeftWidth }} />
                 <div
                     className={fnCss.merge(css["content"])}>
                     {children}
@@ -112,3 +140,4 @@ export default function({ title, children, footer }: Props) {
         </>
     );
 }
+

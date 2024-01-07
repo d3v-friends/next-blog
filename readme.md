@@ -17,4 +17,9 @@ https://developer.mozilla.org/ko/docs/Web/HTML/Element
 * icon
   https://www.svgrepo.com/collection/dazzle-line-icons/
 
-* 
+
+
+
+## 사이드메뉴의 제한사항
+
+* / 루트를 쓰면 조건이 안맞으므로 서브루트를 반드시 써줘야 한다.
