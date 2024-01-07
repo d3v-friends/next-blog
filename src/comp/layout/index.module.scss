@@ -16,7 +16,8 @@ $nav-height: 60px;
   height: 100vh;
   z-index: var(--side-zindex);
   box-shadow: 5px 0 10px rgba(0, 0, 0, 0.1);
-  padding: $nav-height var(--default-padding);
+  padding-top: $nav-height;
+
 }
 
 .content {
@@ -37,4 +38,30 @@ $nav-height: 60px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+// ------------------------------------------------------------
+
+.side-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 3rem;
+}
+
+.side-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.side-label {
+  font-size: 20px;
+  padding-top: 5px;
+  overflow: hidden;
+  word-break: keep-all;
+}
+
+.side-button-icon {
+  width: 2rem;
 }
