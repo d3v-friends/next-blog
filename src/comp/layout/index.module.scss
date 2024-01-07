@@ -27,12 +27,18 @@ $nav-height: 60px;
 }
 
 .side-children {
-  padding-top: calc(#{$nav-height} + var(--default-padding));
+  padding-top: $nav-height;
+  padding-left: 60px;
   z-index: var(--side-children-zindex);
   border-right: 1px solid var(--border-color);
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-  padding-left: calc(60px + var(--default-padding));
-  padding-right: var(--default-padding);
+}
+
+.side-div {
+  //height: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  border-top: 1px solid var(--border-color);
 }
 
 .content {
@@ -71,10 +77,6 @@ $nav-height: 60px;
 }
 
 .nav-title-label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
   font-family: consolas, sans-serif;
   font-size: 1.2rem;
 }

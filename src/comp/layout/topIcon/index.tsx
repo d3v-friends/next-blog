@@ -11,9 +11,15 @@ interface Props {
 
 export default function({ href, label, imgSrc }: Props) {
     return (
-        <Link className={fnCss.merge(css["cont"])} href={href}>
-            <Image src={imgSrc} alt={label} width={50} height={50} />
-            <div>{label}</div>
+        <Link
+            className={fnCss.merge(css["cont"])}
+            href={href}>
+            <Image
+                className={fnCss.merge(css["img"], css["gray-filter"])}
+                src={imgSrc}
+                alt={label}
+                width={30}
+                height={30} />
         </Link>
     );
 }

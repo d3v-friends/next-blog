@@ -14,53 +14,49 @@ export default async function({ children }: Props) {
         <Layout
             navMenu={[
                 {
-                    label: "Dashboard",
-                    href: "/dashboard",
-                    imgSrc: "/asset/svg/white/account.svg",
+                    label: "SignUp",
+                    href: "/sign/up",
+                    imgSrc: "/asset/svg/white/sign-up.svg",
                 },
                 {
-                    label: "Javascript",
-                    href: "/lang/js",
-                    imgSrc: "/asset/svg/white/account.svg",
-                },
-                {
-                    label: "C++",
-                    href: "/lang/cpp",
-                    imgSrc: "/asset/svg/white/account.svg",
-                },
-                {
-                    label: "Golang",
-                    href: "/lang/go",
-                    imgSrc: "/asset/svg/white/account.svg",
+                    label: "SignIn",
+                    href: "/sign/in",
+                    imgSrc: "/asset/svg/white/sign-in.svg",
                 },
             ]}
             sideMenu={[
                 {
                     label: "Dashboard",
                     href: "/dashboard",
-                    imgSrc: "/asset/svg/white/account.svg",
+                    imgSrc: "/asset/png/dashboard.png",
                     sub: <>Dashboard</>,
+                },
+                {
+                    label: "Golang",
+                    href: "/lang/golang",
+                    imgSrc: "/asset/png/go.png",
+                    sub: <>Golang</>,
                 },
                 {
                     label: "Javascript",
                     href: "/lang/js",
-                    imgSrc: "/asset/svg/white/account.svg",
+                    imgSrc: "/asset/png/typescript.png",
                     sub: <>Javascript</>,
                 },
                 {
                     label: "C++",
                     href: "/lang/cpp",
-                    imgSrc: "/asset/svg/white/account.svg",
+                    imgSrc: "/asset/png/cpp.png",
                     sub: <>Cpp</>,
                 },
                 {
-                    label: "Golang",
-                    href: "/lang/go",
-                    imgSrc: "/asset/svg/white/account.svg",
-                    sub: <>Golang</>,
+                    label: "UnrealEngine",
+                    href: "/fw/ue",
+                    imgSrc: "/asset/png/ue.png",
+                    sub: <>Unreal engine</>,
                 },
             ]}
-            title={"next-blog"}>
+            title={"d3v-friends"}>
             {children}
         </Layout>
         </body>

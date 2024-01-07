@@ -4,6 +4,10 @@
 /.vscode/
 /.fleet/
 
+# programs
+/cheat.md
+/content
+
 # env
 /.env
 /.env.production
@@ -46,4 +50,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-/cheat.md
+

@@ -7,6 +7,8 @@ import css from "./index.module.scss";
 import { useSpring, animated } from "@react-spring/web";
 import SideIcon from "./sideIcon";
 import TopIcon from "./topIcon";
+import Icon from "./sideIcon/icon";
+import IconBtn from "./sideIcon/btn";
 
 interface Props {
     mobileMenuHref?: string;
@@ -73,30 +75,30 @@ export default function({ title, children, footer, sideMenu, navMenu }: Props) {
                 return;
             }
 
-            if (sideActive) {
-                handler.onHide();
-            } else {
-                handler.onShow();
-            }
+            sideActive ? handler.onHide() : handler.onShow();
+
         },
     };
 
     return (
         <>
             <nav className={css.nav}>
-                <Link
+                <div
                     className={fnCss.merge(css["nav-title-cont"])}
-                    href={"/"}
                     style={{ width: SideSize.children }}>
-                    <SideIcon
-                        isActive={false}
-                        imgSrc={"/asset/svg/white/caret-up.svg"}
-                        size={SideSize.parent} />
-                    <div
-                        className={fnCss.merge(css["nav-title-label"])}>
-                        {title}
+                    <Icon
+                        label="dev-friends"
+                        imgSrc={"/asset/png/dev-friends.png"}
+                        size={SideSize.parent}
+                        bgColor={"transparent"}
+                    />
+                    <div className={fnCss.merge(css["nav-title-label"], "display-flex-center", "flex-grow-1")}>
+                        <Link href="/">
+                            {title}
+                        </Link>
                     </div>
-                </Link>
+
+                </div>
                 <div className={fnCss.merge(css["nav-side-cont"])}>
                     {navMenu.map((v, i) => (<TopIcon key={i} {...v}></TopIcon>))}
                 </div>
@@ -116,10 +118,13 @@ export default function({ title, children, footer, sideMenu, navMenu }: Props) {
                             size={SideSize.parent} />
                     </div>
                 ))}
-
+                <div className={fnCss.merge(css["side-div"])} />
+                <div onClick={() => sideActive ? handler.onHide() : handler.onShow()}>
+                    <IconBtn size={SideSize.parent} isActive={sideActive} />
+                </div>
             </div>
 
-            {/* 유동형 2단 */}
+            {/* 이동형 2단 */}
             <animated.div
                 style={{
                     left: style.sideLeft,
